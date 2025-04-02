@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: url('https://drive.google.com/uc?id=1-QfQKEtMK5lXHI0TsPN-hMUnwflSbZ1i') no-repeat center center fixed;
-            background-size: cover;
+            background: url('https://drive.google.com/uc?export=view&id=1-QfQKEtMK5lXHI0TsPN-hMUnwflSbZ1i') no-repeat center center/cover;
             color: white;
             padding: 20px;
         }
@@ -52,82 +52,51 @@
     </style>
 </head>
 <body>
+
     <div class="container">
         <h2>Xingkairura Vtuber ID - Bagi Bagi THR</h2>
+        
         <p><strong>Wajib bergabung ke:</strong></p>
         <a href="https://whatsapp.com/channel/0029VaeRwMP3GJOz7wA2bY3p" class="btn" id="channel-btn">Gabung Saluran</a>
-        <a href="https://chat.whatsapp.com/K6gDbRinjB4I2xOWP5SZ8H" class="btn" id="group-btn">Gabung Grup</a><div class="progress-container">
-        <div class="progress-bar" id="progress-bar">0%</div>
-    </div>
-    
-    <a href="#" class="btn disabled" id="next-btn-step1">Selanjutnya</a>
-    
-    <div id="share-section" style="display: none;">
-        <h3>Misi: Bagikan Link Website Ini</h3>
-        <p>Bagikan link ke 20 orang untuk mendapatkan THR!</p>
-        <p id="counter">0/20</p>
-        <button id="shareBtn" class="btn">Bagikan via WhatsApp</button>
-        <a href="#" class="btn disabled" id="next-btn-step2">Selanjutnya</a>
-    </div>
-</div>
-
-<script>
-    let count = 0;
-    const goal = 20;
-    let joinedChannel = false;
-    let joinedGroup = false;
-    const progressBar = document.getElementById('progress-bar');
-    const counterText = document.getElementById('counter');
-    const nextBtnStep1 = document.getElementById('next-btn-step1');
-    const nextBtnStep2 = document.getElementById('next-btn-step2');
-    const shareSection = document.getElementById('share-section');
-
-    document.getElementById('channel-btn').addEventListener('click', function() {
-        joinedChannel = true;
-        updateProgress();
-    });
-
-    document.getElementById('group-btn').addEventListener('click', function() {
-        joinedGroup = true;
-        updateProgress();
-    });
-
-    function updateProgress() {
-        let progress = 0;
-        if (joinedChannel) progress += 50;
-        if (joinedGroup) progress += 50;
-
-        progressBar.style.width = progress + '%';
-        progressBar.textContent = Math.round(progress) + '%';
-
-        if (joinedChannel && joinedGroup) {
-            nextBtnStep1.classList.remove('disabled');
-            nextBtnStep1.href = "#";
-            nextBtnStep1.addEventListener('click', function() {
-                shareSection.style.display = 'block';
-                nextBtnStep1.style.display = 'none';
-            });
-        }
-    }
-
-    document.getElementById('shareBtn').addEventListener('click', function() {
-        const whatsappURL = `https://api.whatsapp.com/send?text=Gabung%20ke%20channel%20ini:%20https://whatsapp.com/channel/0029VaeRwMP3GJOz7wA2bY3p`;
-        window.open(whatsappURL, '_blank');
+        <a href="https://chat.whatsapp.com/K6gDbRinjB4I2xOWP5SZ8H" class="btn" id="group-btn">Gabung Grup</a>
         
-        count++;
-        updateShareProgress();
-    });
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar">0%</div>
+        </div>
 
-    function updateShareProgress() {
-        let progress = (count / goal) * 100;
-        counterText.textContent = `${count}/${goal}`;
-        
-        if (count >= goal) {
-            nextBtnStep2.classList.remove('disabled');
-            nextBtnStep2.href = "https://wa.me/message/DSWLZYRRNXD4J1";
+        <a href="#" class="btn disabled" id="next-btn">Selanjutnya</a>
+    </div>
+
+    <script>
+        let joinedChannel = false;
+        let joinedGroup = false;
+        const progressBar = document.getElementById('progress-bar');
+        const nextBtn = document.getElementById('next-btn');
+
+        document.getElementById('channel-btn').addEventListener('click', function() {
+            joinedChannel = true;
+            updateProgress();
+        });
+
+        document.getElementById('group-btn').addEventListener('click', function() {
+            joinedGroup = true;
+            updateProgress();
+        });
+
+        function updateProgress() {
+            let progress = 0;
+            if (joinedChannel) progress += 50;
+            if (joinedGroup) progress += 50;
+
+            progressBar.style.width = progress + '%';
+            progressBar.textContent = progress + '%';
+
+            if (joinedChannel && joinedGroup) {
+                nextBtn.classList.remove('disabled');
+                nextBtn.href = "https://wa.me/message/DSWLZYRRNXD4J1"; // Ganti dengan link tujuan
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
 </html>
